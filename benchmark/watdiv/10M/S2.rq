@@ -1,0 +1,11 @@
+PREFIX sorg: <http://schema.org/>
+PREFIX dc: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wsdbm: <http://db.uwaterloo.ca/~galuc/wsdbm/>
+SELECT ?v0 ?v1 ?v3 WHERE {
+	?v0	dc:Location	?v1 .
+	?v0	sorg:nationality	wsdbm:Country22 .
+	?v0	wsdbm:gender	?v3 .
+	?v0	rdf:type	wsdbm:Role2 .
+}
+

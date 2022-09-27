@@ -1,0 +1,11 @@
+PREFIX sorg: <http://schema.org/>
+PREFIX wsdbm: <http://db.uwaterloo.ca/~galuc/wsdbm/>
+SELECT ?v0 ?v1 ?v2 ?v4 ?v5 ?v6 WHERE {
+	?v0	sorg:contentRating	?v1 .
+	?v0	sorg:contentSize	?v2 .
+	?v0	wsdbm:hasGenre	wsdbm:SubGenre24 .
+	?v4	wsdbm:makesPurchase	?v5 .
+	?v5	wsdbm:purchaseDate	?v6 .
+	?v5	wsdbm:purchaseFor	?v0 .
+}
+

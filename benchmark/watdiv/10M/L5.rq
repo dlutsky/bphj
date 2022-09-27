@@ -1,0 +1,9 @@
+PREFIX sorg: <http://schema.org/>
+PREFIX gn: <http://www.geonames.org/ontology#>
+PREFIX wsdbm: <http://db.uwaterloo.ca/~galuc/wsdbm/>
+SELECT ?v0 ?v1 ?v3 WHERE {
+	?v0	sorg:jobTitle	?v1 .
+	wsdbm:City133	gn:parentCountry	?v3 .
+	?v0	sorg:nationality	?v3 .
+}
+

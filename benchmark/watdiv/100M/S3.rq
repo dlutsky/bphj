@@ -1,0 +1,10 @@
+PREFIX sorg: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wsdbm: <http://db.uwaterloo.ca/~galuc/wsdbm/>
+SELECT ?v0 ?v2 ?v3 ?v4 WHERE {
+	?v0	rdf:type	wsdbm:ProductCategory4 .
+	?v0	sorg:caption	?v2 .
+	?v0	wsdbm:hasGenre	?v3 .
+	?v0	sorg:publisher	?v4 .
+}
+

@@ -1,0 +1,64 @@
+BASE <http://yago-knowledge.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?gname ?fname WHERE {
+	?geo <hasGeonamesEntityId> ?id .
+	?geo <hasLatitude> ?lat .
+	?geo <hasLongitude> ?lon .
+	?geo rdfs:label ?label .
+	?geo <hasGloss> ?gloss .
+}
+
+SELECT ?gname ?fname WHERE {
+	?stmt <occursSince> ?since .
+	?stmt <occursUntil> ?until .
+	?stmt <occursIn> ?loc .
+}
+
+isLocatedIn
+
+happenedIn
+happenedOnDate
+
+occursIn
+occursSince
+occursUntil
+byTransport
+hasPredecessor
+
+
+
+hasArea
+hasNumberOfPeople
+hasPopulationDensity
+
+
+actedIn
+directed
+hasImdb
+
+
+
+<Emmy_Award>
+
+
+Y4
+?geo <hasArea> ?area .
+	?geo <linksTo> ?entity .
+
+
+<http://yago-knowledge.org/resource/Barcelona>
+
+isPreferredMeaningOf
+hasNumberOfPeople
+
+
+BASE <http://yago-knowledge.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+	?p <hasWonPrize> ?award.
+	?p <hasMusicalRole> ?role .
+    ?p <hasGivenName> ?gname .
+	?p <hasFamilyName> ?fname .
+}
+
+

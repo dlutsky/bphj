@@ -1,0 +1,9 @@
+BASE <http://yago-knowledge.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+	?p <hasGivenName> ?gname .
+	?p <hasFamilyName> ?fname .
+	?p <isMarriedTo> ?f.
+	?p <hasChild> ?c.
+	?p <worksAt> ?co.
+}

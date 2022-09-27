@@ -1,0 +1,7 @@
+BASE <http://yago-knowledge.org/resource/>
+SELECT * WHERE {
+    ?p <hasAcademicAdvisor> ?prof.
+    ?p <graduatedFrom>  ?univ.
+    ?univ <isLocatedIn> ?n.
+    ?n <hasCapital> ?city.
+}

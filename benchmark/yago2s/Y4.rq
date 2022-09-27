@@ -1,0 +1,10 @@
+BASE <http://yago-knowledge.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+	?p <hasWonPrize> ?award.
+	?p <wasBornOnDate> ?date.
+	?p <actedIn> ?movie .
+	?d <directed> ?movie.
+	?movie <hasImdb> ?imdb.
+	?movie <hasWikipediaUrl> ?url.
+}

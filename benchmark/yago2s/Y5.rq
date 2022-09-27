@@ -1,0 +1,13 @@
+BASE <http://yago-knowledge.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+	?c <hasCapital> ?city.
+	?c <hasGDP> ?gdp.
+	?c <hasNumberOfPeople> ?pop.
+	?c <hasOfficialLanguage> ?lang.
+	?c <hasCurrency> ?cy.
+	?c <hasImport> ?imp.
+	?c <hasExport> ?exp.
+	?a <isLocatedIn> ?city .
+	?a <hasAirportCode> ?code .
+}

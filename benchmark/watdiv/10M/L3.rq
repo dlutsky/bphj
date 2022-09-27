@@ -1,0 +1,6 @@
+PREFIX wsdbm: <http://db.uwaterloo.ca/~galuc/wsdbm/>
+SELECT ?v0 ?v1 WHERE {
+	?v0	wsdbm:likes	?v1 .
+	?v0	wsdbm:subscribes	wsdbm:Website1206 .
+}
+
