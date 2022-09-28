@@ -1,28 +1,28 @@
 #Makefile
 
-GROVE_DIR = .
+ROOT_DIR = .
 
-SRC_DIR = $(GROVE_DIR)/src
-TOOL_DIR = $(GROVE_DIR)/tools
-TEST_DIR = $(GROVE_DIR)/test
-TP_DIR = $(GROVE_DIR)/third_party
-
-
-OBJ_DIR = $(GROVE_DIR)/obj
-LIB_DIR = $(GROVE_DIR)/lib
-BIN_DIR = $(GROVE_DIR)/bin
+SRC_DIR = $(ROOT_DIR)/src
+TOOL_DIR = $(ROOT_DIR)/tools
+TEST_DIR = $(ROOT_DIR)/test
+TP_DIR = $(ROOT_DIR)/third_party
 
 
-HEADER_PATH = /usr/local/include/grove
+OBJ_DIR = $(ROOT_DIR)/obj
+LIB_DIR = $(ROOT_DIR)/lib
+BIN_DIR = $(ROOT_DIR)/bin
+
+
+HEADER_PATH = /usr/local/include/bphj
 LIB_PATH = /usr/local/lib
-CONF_PATH = /etc/grove/
-DATA_PATH = /var/lib/grove
+CONF_PATH = /etc/bphj/
+DATA_PATH = /var/lib/bphj
 
 CXX = g++
 
 CXXFLAGS = -std=c++2a -g -Wall -Wextra -pthread -w
 
-CPPFLAGS = -isystem $(GROVE_DIR)/include -isystem $(GTEST_DIR)/include -isystem $(TP_DIR)
+CPPFLAGS = -isystem $(ROOT_DIR)/include -isystem $(GTEST_DIR)/include -isystem $(TP_DIR)
 
 LDFLAGS = -L/usr/local/lib
 
@@ -66,7 +66,7 @@ TEST_OBJS = $(OBJ_DIR)/test_main.o $(OBJ_DIR)/bitvector_test.o \
 TP_OBJS = $(OBJ_DIR)/murmur_hash3.o
 
 
-TARGET = $(BIN_DIR)/grovetool
+TARGET = $(BIN_DIR)/dbtool
 
 
 all: build
@@ -76,15 +76,15 @@ build: dirs $(TARGET)
 	@ echo "Build finished."
 
 
-test: dirs $(LIB_DIR)/libgrove.a $(BIN_DIR)/grovetest
+test: dirs $(LIB_DIR)/libbphj.a $(BIN_DIR)/dbtest
 	@ echo "Tests starting..."
-	@ $(BIN_DIR)/grovetest
+	@ $(BIN_DIR)/dbtest
 
 
 install: build
 	@ mkdir -p $(HEADER_PATH) $(CONF_PATH) $(DATA_PATH)
 	@ chmod 777 $(DATA_PATH)
-	@ # cp $(GROVE_DIR)/include/*.h $(HEADER_PATH)
+	@ # cp $(ROOT_DIR)/include/*.h $(HEADER_PATH)
 	@ echo "Installation finished."
 
 
@@ -97,21 +97,19 @@ dirs:
 
 
 
-#Grove Tools
-$(BIN_DIR)/grovetool: $(OBJ_DIR)/command.o $(OBJ_DIR)/grove_tool.o $(LIB_DIR)/libgrove.a
+#DB Tools
+$(BIN_DIR)/dbtool: $(OBJ_DIR)/command.o $(OBJ_DIR)/db_tool.o $(LIB_DIR)/libbphj.a
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDLIBS)
 
-$(BIN_DIR)/groveload_mpi: $(LIB_DIR)/libgrove.a
-	#$(MPICXX) $(CPPFLAGS) -o $@ $^
 
 $(OBJ_DIR)/command.o: $(TOOL_DIR)/command.h $(TOOL_DIR)/command.cpp
 	$(CXX) $(CPPFLAGS) -I$(SRC_DIR) $(CXXFLAGS) -c -o $@ $(TOOL_DIR)/command.cpp
 
-$(OBJ_DIR)/grove_tool.o: $(TOOL_DIR)/grove_tool.cpp
-	$(CXX) $(CPPFLAGS) -I$(SRC_DIR) $(CXXFLAGS) -c -o $@ $(TOOL_DIR)/grove_tool.cpp
+$(OBJ_DIR)/db_tool.o: $(TOOL_DIR)/db_tool.cpp
+	$(CXX) $(CPPFLAGS) -I$(SRC_DIR) $(CXXFLAGS) -c -o $@ $(TOOL_DIR)/db_tool.cpp
 
-#Grove Library
-$(LIB_DIR)/libgrove.a: $(ALL_OBJS) $(TP_OBJS)
+#DB Library
+$(LIB_DIR)/libbphj.a: $(ALL_OBJS) $(TP_OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 
@@ -238,8 +236,8 @@ $(OBJ_DIR)/string_util.o: $(SRC_DIR)/util/string_util.h $(SRC_DIR)/util/string_u
 
 
 
-#Grove Test
-$(BIN_DIR)/grovetest: $(OBJ_DIR)/gtest-all.o $(TEST_OBJS) $(LIB_DIR)/libgrove.a
+#DB Test
+$(BIN_DIR)/dbtest: $(OBJ_DIR)/gtest-all.o $(TEST_OBJS) $(LIB_DIR)/libbphj.a
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDLIBS)
 
 
@@ -274,7 +272,7 @@ $(OBJ_DIR)/murmur_hash3.o: $(TP_DIR)/smhasher/MurmurHash3.h $(TP_DIR)/smhasher/M
 
 
 #Gtest
-GTEST_DIR = $(GROVE_DIR)/third_party/googletest
+GTEST_DIR = $(ROOT_DIR)/third_party/googletest
 
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h

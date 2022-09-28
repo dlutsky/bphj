@@ -1,7 +1,7 @@
 BASE <http://yago-knowledge.org/resource/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT * WHERE {
-	?geo rdfs:label ?label .
+	?geo <linksTo> ?place .
 	?geo <hasWikipediaUrl> ?url .
 	?geo <isLocatedIn> <Barcelona> .
 }

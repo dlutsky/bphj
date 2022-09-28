@@ -1,4 +1,4 @@
-# Grove
+# BPHJ
 
 
 ## Build
@@ -40,12 +40,12 @@
     ```
 
 
-### Compile Grove
+### Compile BPHJ
 Clone this repository and compile from source code
 
 ```
 git clone
-cd grove
+cd bphj
 make
 sudo make install
 ```
@@ -54,12 +54,12 @@ sudo make install
 Create a database and load data
 
 ```
-grovetool create watdiv100MDB
-grovetool load watdiv100MDB ./watdiv100M.nt
+dbtool create watdiv100MDB
+dbtool load watdiv100MDB ./watdiv100M.nt
 ```
 
 Run SPARQL queries
 
 ```
-grovetool query watdiv100MDB --input-file=/benchmark/watdiv/100M/S1.rq
+dbtool query watdiv100MDB --input-file=/benchmark/watdiv/100M/S1.rq
 ```

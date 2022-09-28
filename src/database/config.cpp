@@ -6,7 +6,7 @@
 const std::string ConfigKey::STORE_PATH = "store_path";
 
 
-const std::string Config::DEFAULT_CONFIG_FILEPATH = "/etc/grove/init.conf";
+const std::string Config::DEFAULT_CONFIG_FILEPATH = "/etc/bphj/init.conf";
 const std::string Config::DEFAULT_STORE_PATH = ".";
 
 std::map<std::string, std::string> Config::config_map;
