@@ -5,11 +5,6 @@
 
 ### Install Dependencies
 
-* Install serd
-    ```
-    sudo apt-get install libserd-0-0 libserd-dev
-    ```
-
 
 * Install libdb++-dev
     ```
