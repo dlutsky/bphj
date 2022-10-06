@@ -86,6 +86,8 @@ bool DatabaseBuilder::buildFromRDFFiles(std::vector<std::string>& rdf_files) {
 
   File::remove(triple_file);
 
+  std::cout<<"Total tripes: "<<triple_count<<std::endl;
+
   return true;
 }
 
@@ -111,8 +113,6 @@ bool DatabaseBuilder::encodeRDFFile(const std::string& rdf_file, Dictionary &dic
       writer.append(subject.c_str(), subject.length());
       writer.append(predicate.c_str(), predicate.length());
       writer.append(object.c_str(), object.length());
-      
-      ++triple_count;
     }
   } else {
     EncodedTriple triple;
@@ -122,8 +122,6 @@ bool DatabaseBuilder::encodeRDFFile(const std::string& rdf_file, Dictionary &dic
       triple.oid = dict.append(object);
       
       writer.append(reinterpret_cast<const char*>(&triple), ENCODED_TRIPLE_SIZE);
-      
-      ++triple_count;
     }
   }
   
@@ -186,6 +184,8 @@ bool DatabaseBuilder::buildStoragesForPSO(const std::string& triple_file) {
     if(prev_pid == cur_pid && prev_sub == iter->sid && prev_obj == iter->oid) {
       continue;
     }
+
+    ++triple_count;
 
     subject1.column.push_back(iter->sid);
     object1.column.push_back(iter->oid);

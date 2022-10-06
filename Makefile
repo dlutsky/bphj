@@ -32,8 +32,6 @@ LDLIBS = -lpthread -lrocksdb -ldl -lsnappy -lbz2 -lrt -lz -llz4 -lzstd -lyaml-cp
          -lprotobuf -lprotoc -lhdfspp_static -lsasl2 -lcrypto -lroaring -ldb_cxx-5.3
 
 
-MPICXX = mpicxx
-
 
 BMP_OBJS = $(OBJ_DIR)/bitvector.o $(OBJ_DIR)/roaring_bitvector.o
 BUF_OBJS = $(OBJ_DIR)/buffer_manager.o $(OBJ_DIR)/buffer_page.o

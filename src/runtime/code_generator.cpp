@@ -98,7 +98,7 @@ Operator* CodeGenerator::generateTableScan(const PlanNode* plan_node, std::map<u
       predicate = runtime.createResource();
       predicate->id = plan_node->query_node.predicate.id;
       predicate->literal = plan_node->query_node.predicate.value;
-      if(plan_node->required_res.count(plan_node->query_node.predicate.id) != 0) {
+      if(plan_node->query_node.predicate.type == QueryResource::Variable && plan_node->required_res.count(plan_node->query_node.predicate.id) != 0) {
         resources[predicate->id] = predicate;
       }
 
@@ -116,7 +116,7 @@ Operator* CodeGenerator::generateTableScan(const PlanNode* plan_node, std::map<u
       predicate = runtime.createResource();
       predicate->id = plan_node->query_node.predicate.id;
       predicate->literal = plan_node->query_node.predicate.value;
-      if(plan_node->required_res.count(plan_node->query_node.predicate.id) != 0) {
+      if(plan_node->query_node.predicate.type == QueryResource::Variable && plan_node->required_res.count(plan_node->query_node.predicate.id) != 0) {
         resources[predicate->id] = predicate;
       }
 
@@ -136,7 +136,7 @@ Operator* CodeGenerator::generateTableScan(const PlanNode* plan_node, std::map<u
       predicate = runtime.createResource();
       predicate->id = plan_node->query_node.predicate.id;
       predicate->literal = plan_node->query_node.predicate.value;
-      if(plan_node->required_res.count(plan_node->query_node.predicate.id) != 0) {
+      if(plan_node->query_node.predicate.type == QueryResource::Variable && plan_node->required_res.count(plan_node->query_node.predicate.id) != 0) {
         resources[predicate->id] = predicate;
       }
 
